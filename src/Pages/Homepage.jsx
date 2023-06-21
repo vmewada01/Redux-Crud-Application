@@ -1,0 +1,101 @@
+import { Box, Flex, Text } from "@chakra-ui/react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useSearchParams } from "react-router-dom";
+import TaskCard from "../Components/TaskCard";
+import { getTasks } from "../Redux/AppReducer/action";
+
+const Homepage = () => {
+  const tasks = useSelector((state) => state.AppReducer.tasks);
+  const [searchParams] = useSearchParams();
+  const dispatch = useDispatch();
+
+  const filterByParamTags = (task) => {
+    //to filter out the tags that we have based on the params
+    const tagsInTheParams = searchParams.getAll("tags");
+    if (tagsInTheParams.includes("All") || tagsInTheParams.length === 0) {
+      return task;
+    }
+    const data = task.tags.filter((tag) => {
+      if (tagsInTheParams.includes(tag)) {
+        return true;
+      }
+      return false;
+    });
+
+    if (data.length) {
+      return task;
+    }
+
+    return false;
+  };
+
+  useEffect(() => {
+    if (tasks.length === 0) {
+      dispatch(getTasks());
+    }
+  }, [dispatch, tasks.length]);
+
+  return (
+    <Box width="100%" paddingTop="1rem">
+      <Flex justifyContent="space-around">
+        {/* Todo */}
+        <Box border="1px solid rgba(0,0,0,0.1)" width="32%" height="95vh">
+          <Box backgroundColor="green.100">
+            <Text textAlign="center" fontWeight="bold">
+              TODO
+            </Text>
+          </Box>
+          {/* todo tasks */}
+          {tasks.length > 0 &&
+            tasks
+              .filter((item) => item.task_status === "todo")
+              .filter(filterByParamTags)
+              .map((item) => {
+                return <TaskCard key={item.id} {...item} colorScheme="green" />;
+              })}
+        </Box>
+
+        {/* in-progress */}
+
+        <Box border="1px solid rgba(0,0,0,0.1)" width="32%" height="95vh">
+          <Box backgroundColor="yellow.100">
+            <Text textAlign="center" fontWeight="bold">
+              IN-PROGRESS
+            </Text>
+          </Box>
+          {/* in-progress tasks */}
+          {tasks.length > 0 &&
+            tasks
+              .filter((item) => item.task_status === "in-progress")
+              .filter(filterByParamTags)
+              .map((item) => {
+                return (
+                  <TaskCard key={item.id} {...item} colorScheme="yellow" />
+                );
+              })}
+        </Box>
+
+        {/* Done */}
+
+        <Box border="1px solid rgba(0,0,0,0.1)" width="32%" height="95vh">
+          <Box backgroundColor="blue.100">
+            <Text textAlign="center" fontWeight="bold">
+              DONE
+            </Text>
+          </Box>
+          {/* done tasks */}
+          {tasks.length > 0 &&
+            tasks
+              .filter((item) => item.task_status === "done")
+              .filter(filterByParamTags)
+              .map((item) => {
+                return <TaskCard key={item.id} {...item} colorScheme="blue" />;
+              })}
+        </Box>
+      </Flex>
+    </Box>
+  );
+};
+
+export default Homepage;
