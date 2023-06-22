@@ -1,8 +1,17 @@
+
+import { Box, Button, Flex, Text } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { getTagsList } from "../Redux/AppReducer/action";
+import Profile from "./Profile";
+
 import { Box, Flex, Text } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import { getTagsList } from "../Redux/AppReducer/action";
+
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -12,6 +21,17 @@ const Sidebar = () => {
   const [selectedTags, setSelectedTags] = useState(
     searchParams.getAll("tags") || []
   );
+
+  const navigate = useNavigate();
+
+  const logoutHandler = () => {
+    new Promise((res, rej) => {
+      res(localStorage.removeItem("token"));
+    }).then(() => {
+      navigate("/login");
+    });
+  };
+
 
   const handleTagChange = (value) => {
     //if the tag is selected remove it, else add it.
@@ -38,16 +58,34 @@ const Sidebar = () => {
       height="95vh"
       marginTop="1rem"
       padding="0.25rem"
+
+      borderRadius="5px"
+    >
+      <Flex direction="column" height="inherit">
+        <Box height="15%" border="1px solid rgba(0,0,0,0.1)" borderRadius="5px">
+          {/* userprofile */}
+          <Profile />
+        </Box>
+        <Flex justify="center" margin="0.25rem 0">
+          <Button width="100%">Create New Task</Button>
+        </Flex>
+        <Box minHeight="70%" overflow="auto">
+
     >
       <Flex direction="column" height="inherit">
         <Box height="15%" border="1px solid rgba(0,0,0,0.1)">
           {/* userprofile */}
         </Box>
         <Box minHeight="70%" border="1px solid rgba(0,0,0,0.1)">
+
           <Flex direction="column" gap="5px">
             <Box
               boxShadow="0px 10px 15px -3px rgba(0,0,0,0.1)"
               padding="5px 0px"
+
+              borderRadius="5px"
+
+
               cursor="pointer"
               onClick={() => {
                 handleTagChange("All");
@@ -57,9 +95,15 @@ const Sidebar = () => {
               }
               color={selectedTags.includes("All") ? "white" : "black"}
             >
+
+              <Flex padding="0 10px">
+                <Text>All</Text>
+                <Text marginLeft="auto">{tasks.length}</Text>
+
               <Flex>
                 <Text>All</Text>
                 <Text>{tasks.length}</Text>
+
               </Flex>
             </Box>
             {tagLists.length > 0 &&
@@ -70,6 +114,10 @@ const Sidebar = () => {
                     boxShadow="0px 10px 15px -3px rgba(0,0,0,0.1)"
                     padding="5px 0px"
                     cursor="pointer"
+
+                    borderRadius="5px"
+
+
                     onClick={() => {
                       handleTagChange(tagObj.tag);
                     }}
@@ -82,9 +130,15 @@ const Sidebar = () => {
                       selectedTags.includes(tagObj.tag) ? "white" : "black"
                     }
                   >
+
+                    <Flex padding="0 10px">
+                      <Text>{tagObj.tag}</Text>
+                      <Text marginLeft="auto">
+
                     <Flex>
                       <Text>{tagObj.tag}</Text>
                       <Text>
+
                         {
                           tasks.filter((item) => item.tags.includes(tagObj.tag))
                             .length
@@ -96,6 +150,14 @@ const Sidebar = () => {
               })}
           </Flex>
         </Box>
+
+        <Box height="10vh">
+          <Button width="100%" onClick={logoutHandler}>
+            LOGOUT
+          </Button>
+        </Box>
+
+
       </Flex>
     </Box>
   );

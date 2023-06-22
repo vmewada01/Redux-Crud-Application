@@ -40,8 +40,19 @@ const Homepage = () => {
     <Box width="100%" paddingTop="1rem">
       <Flex justifyContent="space-around">
         {/* Todo */}
+
+        <Box
+          border="1px solid rgba(0,0,0,0.1)"
+          borderRadius="5px"
+          width="32%"
+          height="95vh"
+          overflow="auto"
+        >
+          <Box backgroundColor="green.100" position="sticky" top="0" zIndex="1">
+
         <Box border="1px solid rgba(0,0,0,0.1)" width="32%" height="95vh">
           <Box backgroundColor="green.100">
+
             <Text textAlign="center" fontWeight="bold">
               TODO
             </Text>
@@ -58,8 +69,24 @@ const Homepage = () => {
 
         {/* in-progress */}
 
+
+        <Box
+          border="1px solid rgba(0,0,0,0.1)"
+          width="32%"
+          borderRadius="5px"
+          height="95vh"
+          overflow="auto"
+        >
+          <Box
+            backgroundColor="yellow.100"
+            position="sticky"
+            top="0"
+            zIndex="1"
+          >
+
         <Box border="1px solid rgba(0,0,0,0.1)" width="32%" height="95vh">
           <Box backgroundColor="yellow.100">
+
             <Text textAlign="center" fontWeight="bold">
               IN-PROGRESS
             </Text>
@@ -77,9 +104,18 @@ const Homepage = () => {
         </Box>
 
         {/* Done */}
+        <Box
+          border="1px solid rgba(0,0,0,0.1)"
+          width="32%"
+          height="95vh"
+          borderRadius="5px"
+          overflow="auto"
+        >
+          <Box backgroundColor="blue.100" position="sticky" top="0" zIndex="1">
 
         <Box border="1px solid rgba(0,0,0,0.1)" width="32%" height="95vh">
           <Box backgroundColor="blue.100">
+
             <Text textAlign="center" fontWeight="bold">
               DONE
             </Text>
