@@ -1,6 +1,7 @@
 import axios from "axios";
 import * as types from "./actionTypes";
 
+
 const register = (payload) => (dispatch) => {
   dispatch({ type: types.REGISTER_REQUEST });
   return axios
@@ -15,6 +16,12 @@ const login = (params) => (dispatch) => {
   dispatch({ type: types.LOGIN_REQUEST });
   return axios
     .post("http://localhost:8080/auth/login", params)
+
+const login = (params) => (dispatch) => {
+  dispatch({ type: types.LOGIN_REQUEST });
+  return axios
+    .post("https://reqres.in/api/login", params)
+
     .then((r) => {
       dispatch({ type: types.LOGIN_SUCCESS, payload: r.data.token });
     })
@@ -22,6 +29,7 @@ const login = (params) => (dispatch) => {
       dispatch({ type: types.LOGIN_FAILURE, payload: e });
     });
 };
+
 
 const profile = (payload) => (dispatch) => {
   dispatch({ type: types.PROFILE_REQUEST });
@@ -37,3 +45,6 @@ const profile = (payload) => (dispatch) => {
 };
 
 export { login, register, profile };
+
+export { login };
+

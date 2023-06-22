@@ -5,7 +5,9 @@ import Sidebar from "../Components/Sidebar";
 import Editpage from "./Editpage";
 import Homepage from "./Homepage";
 import Login from "./Login";
+
 import Signup from "./Signup";
+
 
 const MainRoutes = () => {
   return (
@@ -28,8 +30,9 @@ const MainRoutes = () => {
           </Stack>
         }
       />
-      <Route path="/login" element={<Login />} />
+
       <Route path="/signup" element={<Signup />} />
+
     </Routes>
   );
 };

@@ -4,7 +4,11 @@ import * as types from "./actionTypes";
 const getTasks = () => (dispatch) => {
   dispatch({ type: types.GET_TASKS_REQUEST });
   return axios
+
     .get("http://localhost:5000/tasks")
+
+    .get("http://localhost:8080/tasks")
+
     .then((r) => {
       dispatch({ type: types.GET_TASKS_SUCCESS, payload: r.data });
     })
@@ -17,7 +21,11 @@ const getTagsList = () => (dispatch) => {
   dispatch({ type: types.GET_TAG_REQUEST });
 
   return axios
+
     .get("http://localhost:5000/tagList")
+
+    .get("http://localhost:8080/tagList")
+
     .then((r) => {
       dispatch({ type: types.GET_TAG_SUCCESS, payload: r.data });
     })
@@ -30,7 +38,11 @@ const updateSubtasksList = (id, payload) => (dispatch) => {
   dispatch({ type: types.UPDATE_SUBTASKS_REQUEST });
 
   return axios
+
     .patch(`http://localhost:5000/tasks/${id}`, payload, {
+
+    .patch(`http://localhost:8080/tasks/${id}`, payload, {
+
       headers: {
         "Access-Control-Allow-Origin": "*",
       },
@@ -40,6 +52,7 @@ const updateSubtasksList = (id, payload) => (dispatch) => {
       dispatch({ type: types.UPDATE_SUBTASKS_FAILURE, payload: e });
     });
 };
+
 
 const updateTasks = (id, payload) => (dispatch) => {
   dispatch({ type: types.UPDATE_TASK_REQUEST });
@@ -110,3 +123,6 @@ export {
   deleteSubTask,
   createTask,
 };
+
+export { getTasks, getTagsList, updateSubtasksList };
+

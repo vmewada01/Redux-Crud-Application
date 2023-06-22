@@ -25,6 +25,10 @@ const TaskCard = ({ id, title, description, tags, subTasks, colorScheme }) => {
   });
 
   const updateSubTaskStatus = (value) => {
+
+
+    console.log(value);
+
     let newSubTaskData = subTasks.map((item) => {
       if (value.includes(item.subTaskTitle)) {
         return {
