@@ -23,7 +23,7 @@ import CreateTask from "../Modals/CreateTask";
 import {
   addSubTasks,
   addTag,
-  deleteSubTask,
+  deleteSubTask, 
   getTagsList,
   getTasks,
   updateSubtasksList,
