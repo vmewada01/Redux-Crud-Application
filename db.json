@@ -4,6 +4,7 @@
       "id": 1,
       "title": "Hello world",
       "description": "description for hello world",
+
       "task_status": "in-progress",
       "tags": [
         "Others",
@@ -15,7 +16,7 @@
           "status": false
         },
         {
-          "subTaskTitle": "Sub Task2",
+
           "status": false
         }
       ]
@@ -41,21 +42,24 @@
     },
     {
       "id": 3,
+
       "title": "Task 3- Hello world",
       "description": "description for Task 3 is changing",
       "task_status": "in-progress",
       "tags": [
         "Personal",
+
+      "title": "Task 3",
+      "description": "description for Task 3",
+      "task_status": "todo",
+      "tags": [
+
         "Official"
       ],
       "subTasks": [
         {
           "subTaskTitle": "Task3: Sub Task 1",
-          "status": true
-        },
-        {
-          "subTaskTitle": "Task3: Sub Task 2",
-          "status": true
+
         }
       ]
     },
@@ -77,6 +81,7 @@
           "status": false
         }
       ]
+
     },
     {
       "title": "Testing Create New Task",
@@ -105,6 +110,8 @@
       ],
       "subTasks": [],
       "id": 6
+
+
     }
   ],
   "tagList": [
@@ -119,10 +126,7 @@
     {
       "id": 3,
       "tag": "Others"
-    },
-    {
-      "tag": "Hello",
-      "id": 4
+
     }
   ]
 }

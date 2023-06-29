@@ -1,3 +1,4 @@
+
 import { DeleteIcon } from "@chakra-ui/icons";
 import {
   Box,
@@ -151,10 +152,17 @@ const Editpage = () => {
     }
   }, [id, tasks]);
 
+
+import { Box, Flex } from "@chakra-ui/react";
+import React from "react";
+
+const Editpage = () => {
+
   return (
     <Box width="100%" paddingTop="1rem">
       <Flex justifyContent="space-around">
         {/* Task title */}
+
         <Flex
           width="220px"
           padding="3px 15px 0 3px"
@@ -314,6 +322,13 @@ const Editpage = () => {
           </Box>
           <CreateTask isOpen={isOpen} onClose={onClose} />
         </Box>
+
+        <Flex></Flex>
+
+        {/* Sub tasks */}
+
+        {/* Create new task */}
+
       </Flex>
     </Box>
   );
