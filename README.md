@@ -14,6 +14,14 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
+
+# Details :- 
+![Screenshot (70)](https://github.com/vmewada01/Redux-Crud-Application/assets/122343841/f3adac95-2b57-4537-a533-48e8c72753f2)
+
+
+![Screenshot (71)](https://github.com/vmewada01/Redux-Crud-Application/assets/122343841/fef92b05-7ccf-4692-a6f5-9ead27ae6dd2)
+
+
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\
@@ -30,6 +38,7 @@ Your app is ready to be deployed!
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 ### `npm run eject`
+
 
 **Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
